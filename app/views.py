@@ -4,3 +4,5 @@ from django.shortcuts import render
 
 def hello(request):
     return render(request, 'hello.html')
+def book(request):
+    return render(request, 'viewbook.html')
