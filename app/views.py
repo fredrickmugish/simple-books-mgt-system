@@ -23,4 +23,24 @@ def addBook(request):
         book.price=p
         book.save()
         return HttpResponseRedirect('/')
+    
+def editBookView(request):
+        book = Book.objects.get(id=request.GET['bookid'])
+        print(book)
+        return render(request, 'editbook.html', {"book":book})
 
+def editBook(request):
+     if request.method=="POST":
+        t=request.POST["title"]
+        p=request.POST["price"]
+        book=Book.objects.get(id=request.POST['bookid'])
+        book.title=t
+        book.price=p
+        book.save()
+        return HttpResponseRedirect('/')
+     
+
+def deleteBook(request):
+      book=Book.objects.get(id=request.POST['bookid'])
+      book.delete()
+      return HttpResponseRedirect("/")

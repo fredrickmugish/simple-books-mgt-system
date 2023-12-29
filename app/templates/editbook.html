@@ -21,43 +21,31 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="add_book/">Add Book</a>
-          </li>
         </ul>
       </div>
     </nav>
 
 
     <div class="container">
+<h1 class="mt-2">Edit Book</h1>
 
-      <h1 class="mt-4">All Books</h1>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for i in books %}
-          <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ i.title }}</td>
-            <td>{{ i.price }}</td>
-            <td>
 
-              <a href="/edit_book?bookid={{i.id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
-              <a href="/delete_book?bookid={{i.id}}"> <button type="button" class="btn btn-danger">Delete</button></a>
-            
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+
+      <form class="mt-4" action="/edit_book/edit" method="get">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{ book.title }}">
+
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" value="{{ book.price }}">
+
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  
       
 
     </div>
