@@ -40,7 +40,6 @@ def editBook(request):
         return HttpResponseRedirect('/')
      
 
-def deleteBook(request):
-      book=Book.objects.get(id=request.POST['bookid'])
-      book.delete()
+def deleteBook(request, pk=None):
+      Book.objects.get(id=pk).delete()
       return HttpResponseRedirect("/")

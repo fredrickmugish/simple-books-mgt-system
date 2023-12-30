@@ -9,6 +9,6 @@ path('add_book/', views.add_book),
 path('add_book/add', views.addBook),
 path('edit_book/', views.editBookView),
 path('edit_book/edit', views.editBook),
-path('delete_book/', views.deleteBook)
+path('delete_book/<int:pk>', views.deleteBook, name="delete_book")
 
 ]
